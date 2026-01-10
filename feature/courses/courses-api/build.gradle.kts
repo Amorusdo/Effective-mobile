@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-network"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -42,4 +43,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+   //Retrofit
+    implementation(libs.retrofit)
 }
