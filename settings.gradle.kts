@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Test task  for Effective Mobile"
 include(":app")
- 
+include(":core-ui")
+include(":core-network")
+include(":core-database")

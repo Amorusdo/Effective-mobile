@@ -19,6 +19,9 @@ coil = "2.7.0"
 
 
 navigationCompose = "2.9.6"
+jetbrainsKotlinJvm = "2.3.0"
+appcompat = "1.6.1"
+material = "1.10.0"
 
 
 
@@ -46,10 +49,14 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 
