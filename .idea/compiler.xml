@@ -2,8 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="21">
-      <module name="Test_task__for_Effective_Mobile.core" target="21" />
-      <module name="Test_task__for_Effective_Mobile.feature" target="21" />
       <module name="Test_task__for_Effective_Mobile.feature-courses-api" target="21" />
       <module name="Test_task__for_Effective_Mobile.feature-courses-ui" target="21" />
       <module name="Test_task__for_Effective_Mobile.network" target="21" />
