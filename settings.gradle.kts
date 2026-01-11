@@ -32,11 +32,15 @@ include(":feature:auth:auth-ui")
 include(":feature:auth:auth-domain")
 include(":feature:auth:auth-api")
 
-include(":feature:courses:courses-ui")
-include(":feature:courses:courses-domain")
 include(":feature:courses:courses-api")
+include(":feature:courses:courses-domain")
+include(":feature:courses:courses-ui")
+
 
 include(":feature:favorites:favorites-ui")
 include(":feature:favorites:favorites-domain")
 
 include(":feature:account:account-ui")
+include(":core:di")
+include(":feature:login")
+include(":core:core-navigation")
