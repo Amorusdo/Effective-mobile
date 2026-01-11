@@ -13,9 +13,11 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/core-database" />
+            <option value="$PROJECT_DIR$/core/core-navigation" />
             <option value="$PROJECT_DIR$/core/core-network" />
             <option value="$PROJECT_DIR$/core/core-ui" />
             <option value="$PROJECT_DIR$/core/core-utils" />
+            <option value="$PROJECT_DIR$/core/di" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/account" />
             <option value="$PROJECT_DIR$/feature/account/account-ui" />
@@ -30,6 +32,7 @@
             <option value="$PROJECT_DIR$/feature/favorites" />
             <option value="$PROJECT_DIR$/feature/favorites/favorites-domain" />
             <option value="$PROJECT_DIR$/feature/favorites/favorites-ui" />
+            <option value="$PROJECT_DIR$/feature/login" />
           </set>
         </option>
       </GradleProjectSettings>

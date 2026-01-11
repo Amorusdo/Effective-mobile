@@ -41,3 +41,6 @@ include(":feature:favorites:favorites-ui")
 include(":feature:favorites:favorites-domain")
 
 include(":feature:account:account-ui")
+include(":core:di")
+include(":feature:login")
+include(":core:core-navigation")

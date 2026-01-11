@@ -8,7 +8,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        minSdk = 36
+        minSdk = 27
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-database"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
