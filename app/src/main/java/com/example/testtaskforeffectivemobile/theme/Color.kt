@@ -1,0 +1,46 @@
+package com.example.testtaskforeffectivemobile.theme
+
+import androidx.compose.ui.graphics.Color
+
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
+val Purple40 = Color(0xFF6650a4)
+val Grey = Color(0xFFB2B4B4)
+val Pink40 = Color(0xFF7D5260)
+val Black = Color(0xFF000000)
+val Red = Color(0xFFAC0B0B)
+val Orange = Color(0xFFE55A1F)
+val  OrangeLight = Color(0xFFFF4C04)
+val  OrangeSoft = Color(0xFFCE774E)
+val Orange_peil = Color(0xFDE38A61)
+val Dark_blue = Color(0xFF282F59)
+val Darker_blue = Color(0xFF1C1E2B)
+val Whitish = Color(0xFFFEFEFF)
+val Redforsplash = Color(0xFFF50303)
+val Transparent = Color(0x00B90000)
+val Blue_lait = Color(0x166F9DB4)
+val Blue_dark = Color(0x209AB5C4)
+val PurpleGrey40 = Color(0xFF625b71)
+val WhiteRed = Color(0x70F70202)
+val Green = Color(0xFF26FC00)
+val AppBar = Color(0xFF041648)
+val ColorRuleButton1 = Color(0xFFff7b00)
+val ColorRuleButton2 = Color(0xFFffb300)
+val ColorRuleButton3 = Color(0xFFffdd55)
+val ColorRuleButton4 = Color(0xFFFFA726)
+val White = Color(0xFFFFFFFF)
+val Dark_green = Color(0xFF026158)
+val White_green = Color(0xAB105237)
+val Blu = Color(0xFF2F4F4F)
+val Blu_sea= Color(0xFF487285)
+val Gray  = Color(0x66656363)
+
+val Yellow  = Color(0xFFFDF803)
+
+
+
+val Oranges  = Color(0xD5985904)
+val Blues  = Color(0xD3035662)
+val Siren  = Color(0xCB620662)
+val Reds  = Color(0xD5810332)
