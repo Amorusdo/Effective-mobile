@@ -1,6 +1,3 @@
-package com.example.courses.presentation.view_model
-
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.courses.domain.model.Course
@@ -14,7 +11,9 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class CoursesViewModel(
+
+
+ class CoursesViewModel(
     private val repository: CoursesRepository
 ) : ViewModel() {
 
@@ -34,6 +33,7 @@ class CoursesViewModel(
                     _uiState.update {
                         it.copy(
                             courses = courses,
+                            filteredCourses = courses,  // изначально все курсы
                             isLoading = false,
                             isSortedByDate = false
                         )
@@ -50,8 +50,26 @@ class CoursesViewModel(
         }
     }
 
+    fun onSearchChange(query: String) {
+        _uiState.update { state ->
+            val filtered = if (query.isBlank()) {
+                state.courses
+            } else {
+                state.courses.filter { course ->
+                    course.title.contains(query, ignoreCase = true) ||
+                            course.description.contains(query, ignoreCase = true)
+                }
+            }
+
+            state.copy(
+                searchQuery = query,
+                filteredCourses = filtered
+            )
+        }
+    }
+
     fun toggleSort() {
-        val currentCourses = _uiState.value.courses
+        val currentCourses = _uiState.value.filteredCourses
         val sorted = if (_uiState.value.isSortedByDate) {
             // Вернуть к исходному порядку
             currentCourses.sortedBy { it.id }
@@ -68,22 +86,27 @@ class CoursesViewModel(
 
         _uiState.update {
             it.copy(
-                courses = sorted,
+                filteredCourses = sorted,
                 isSortedByDate = !it.isSortedByDate
             )
         }
     }
-
     fun toggleFavorite(course: Course) {
         viewModelScope.launch {
             repository.toggleFavorite(course)
 
-            // Обновляем UI локально
             _uiState.update { state ->
                 state.copy(
                     courses = state.courses.map {
                         if (it.id == course.id) {
-                            it.copy(isFavorite = !it.isFavorite)  // ← переключаем
+                            it.copy(isFavorite = !it.isFavorite)
+                        } else {
+                            it
+                        }
+                    },
+                    filteredCourses = state.filteredCourses.map {
+                        if (it.id == course.id) {
+                            it.copy(isFavorite = !it.isFavorite)
                         } else {
                             it
                         }

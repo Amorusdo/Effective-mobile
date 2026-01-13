@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.core_ui.theme.TestTaskForEffectiveMobileTheme
 import com.example.testtaskforeffectivemobile.navigation.AppNavigation
-import com.example.testtaskforeffectivemobile.theme.YourAppTheme
 
 
 class MainActivity : ComponentActivity() {

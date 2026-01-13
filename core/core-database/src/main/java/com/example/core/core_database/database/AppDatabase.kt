@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import com.example.core.core_database.dao.FavoriteCourseDao
 import com.example.core.core_database.entity.FavoriteCourseEntity
 
-
 @Database(
     entities = [FavoriteCourseEntity::class],
     version = 1,

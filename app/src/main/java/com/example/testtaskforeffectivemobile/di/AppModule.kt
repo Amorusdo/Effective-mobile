@@ -4,13 +4,13 @@ package com.example.testtaskforeffectivemobile.di
 
 
 
+import CoursesViewModel
 import androidx.room.Room
 import com.example.auth_ui.presentation.view_model.AuthViewModel
 import com.example.core.core_database.database.AppDatabase
 import com.example.core_network.api.CoursesApiService
 import com.example.courses.domain.repository.CoursesRepositoryImpl
 import com.example.courses.domain.repository.CoursesRepository
-import com.example.courses.presentation.view_model.CoursesViewModel
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

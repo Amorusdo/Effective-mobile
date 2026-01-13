@@ -13,5 +13,5 @@ data class FavoriteCourseEntity(
     val rating: Double,
     val startDate: String,
     val publishDate: String,
-    val addedAt: Long = System.currentTimeMillis() // когда добавили в избранное
+    val addedAt: Long = System.currentTimeMillis()
 )

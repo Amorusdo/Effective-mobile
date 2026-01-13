@@ -1,6 +1,6 @@
 package com.example.core_ui.theme
 
-import BackgroundDark
+import Black
 import GreenButton
 import SurfaceDark
 import androidx.compose.material3.*
@@ -8,11 +8,11 @@ import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
     primary = GreenButton,
-    onPrimary = BackgroundDark,
-    background = BackgroundDark,
+    onPrimary = Black,
+    background = Black,
     surface = SurfaceDark,
-    onSurface = BackgroundDark,
-    onBackground = BackgroundDark
+    onSurface = Black,
+    onBackground = Black
 )
 
 @Composable

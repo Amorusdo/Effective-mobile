@@ -1,6 +1,6 @@
 package com.example.auth_ui.presentation.screen
 
-import BackgroundDark
+import Black
 import GreenButton
 import OKOrange
 import SurfaceDark
@@ -20,12 +20,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -33,8 +38,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -50,19 +55,18 @@ fun LoginScreen(
     onLoginSuccess: () -> Unit ,
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    val context = LocalContext.current
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(Black)
             .padding(16.dp) ,
         contentAlignment = Alignment.Center
     ) {
         Column(
             verticalArrangement = Arrangement.Center
         ) {
-            // Заголовок "Вход"
+            // Заголовок
             Text(
                 text = "Вход" ,
                 style = MaterialTheme.typography.headlineLarge ,
@@ -78,35 +82,62 @@ fun LoginScreen(
             )
             Spacer(modifier = Modifier.height(6.dp))
 
+            Surface(
+                shape = RoundedCornerShape(28.dp),
+            ) {
             OutlinedTextField(
-                value = uiState.email ,
-                onValueChange = { viewModel.onEmailChange(it) } ,
+                value = uiState.email,
+                onValueChange = { viewModel.onEmailChange(it) },
                 placeholder = {
                     Text(
-                        "example@gmail.com" ,
+                        text = "example@gmail.com",
                         color = TextHint
                     )
-                } ,
+                },
+                singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email
-                ) ,
-                isError = uiState.email.isNotEmpty() && ! uiState.isEmailValid ,
+                ),
+                isError = uiState.email.isNotEmpty() && !uiState.isEmailValid,
+                trailingIcon = {
+                    when {
+                        uiState.email.isNotEmpty() && uiState.isEmailValid -> {
+                            Icon(
+                                imageVector = Icons.Default.CheckCircle,
+                                contentDescription = "Email valid",
+                                tint = GreenButton
+                            )
+                        }
+
+                        uiState.email.isNotEmpty() && !uiState.isEmailValid -> {
+                            Icon(
+                                imageVector = Icons.Default.Error,
+                                contentDescription = "Email invalid",
+                                tint = Color.Red
+                            )
+                        }
+                    }
+                },
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color.Transparent ,
-                    unfocusedBorderColor = Color.Transparent ,
-                    errorBorderColor = Color.Red ,
-                    focusedContainerColor = SurfaceDark ,
-                    unfocusedContainerColor = SurfaceDark ,
-                    errorContainerColor = SurfaceDark ,
-                    focusedTextColor = TextWhite ,
-                    unfocusedTextColor = TextWhite
-                ) ,
-                shape = RoundedCornerShape(28.dp) ,
+                    focusedBorderColor = Color.Transparent,
+                    unfocusedBorderColor = Color.Transparent,
+                    errorBorderColor = Color.Transparent,
+
+                    focusedContainerColor = SurfaceDark,
+                    unfocusedContainerColor = SurfaceDark,
+                    errorContainerColor = SurfaceDark,
+
+                    focusedTextColor = TextWhite,
+                    unfocusedTextColor = TextWhite,
+                    errorTextColor = TextWhite,
+
+                    cursorColor = GreenButton
+                ),
+                shape = RoundedCornerShape(28.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(52.dp) ,
-                singleLine = true
-            )
+                    .height(52.dp)
+            )}
 
             Spacer(modifier = Modifier.height(6.dp))
 
@@ -176,7 +207,6 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // "Нету аккаунта? Регистрация" и "Забыл пароль"
             Row(
                 modifier = Modifier.fillMaxWidth() ,
                 horizontalArrangement = Arrangement.Center
@@ -205,7 +235,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(28.dp))
 
-            // Разделитель
+
             HorizontalDivider(
                 thickness = 1.dp ,
                 color = TextGray.copy(alpha = 0.3f)
@@ -222,7 +252,7 @@ fun LoginScreen(
                 SocialButton(
                     painter = painterResource(id = R.drawable.icon_vk) ,
                     color = VKBlue ,
-                    url = "https://vk.com/" ,
+                    url = stringResource(R.string.https_vk_com) ,
                     modifier = Modifier.weight(1f)
 
                 )
@@ -231,7 +261,7 @@ fun LoginScreen(
                 SocialButton(
                     painter = painterResource(id = R.drawable.icon_ok) ,
                     color = OKOrange ,
-                    url = "https://ok.ru/" ,
+                    url = stringResource(R.string.https_ok_ru) ,
                     modifier = Modifier.weight(1f)
                 )
             }

@@ -11,8 +11,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        startKoin {
+        startKoin{
             androidLogger(Level.ERROR)
             androidContext(this@App)
             modules(appModule)
