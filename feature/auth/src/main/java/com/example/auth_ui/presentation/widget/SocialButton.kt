@@ -1,6 +1,5 @@
 package com.example.auth_ui.presentation.widget
 
-import GreenButton
 import TextWhite
 import android.annotation.SuppressLint
 import android.content.Context

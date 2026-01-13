@@ -78,7 +78,7 @@ import java.time.format.DateTimeFormatter
             currentCourses.sortedByDescending { course ->
                 try {
                     LocalDateTime.parse(course.publishDate, DateTimeFormatter.ISO_DATE_TIME)
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     LocalDateTime.MIN
                 }
             }

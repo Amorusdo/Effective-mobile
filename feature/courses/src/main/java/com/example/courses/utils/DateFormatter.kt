@@ -15,7 +15,7 @@ object DateFormatter {
         return try {
             val date = LocalDate.parse(dateString, inputFormatter)
             date.format(outputFormatter)
-        } catch ( data : Exception) {
+        } catch ( _ : Exception) {
             dateString  // вернуть исходную строку если ошибка
         }
     }
