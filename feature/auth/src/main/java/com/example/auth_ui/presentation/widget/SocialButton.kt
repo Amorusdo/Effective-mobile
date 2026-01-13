@@ -31,11 +31,9 @@ fun SocialButton(
     val context = LocalContext.current
 
     val handleClick: () -> Unit = {
-        when {
-            url != null -> openLink(context, url)
-            onClick != null -> onClick()
-        }
+        url?.let { openLink(context, it) } ?: onClick?.invoke()
     }
+
 
     Button(
         onClick = handleClick,
@@ -59,8 +57,8 @@ fun SocialButton(
 
 
 @SuppressLint("UseKtx")
-fun openLink(context: Context , url: String) {fun openLink(context: Context , url: String) {
-    val intent = Intent(Intent.ACTION_VIEW , Uri.parse(url))
+fun openLink(context: Context, url: String) {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     context.startActivity(intent)
-}}
+}

@@ -252,7 +252,7 @@ fun LoginScreen(
                 SocialButton(
                     painter = painterResource(id = R.drawable.icon_vk) ,
                     color = VKBlue ,
-                    url = stringResource(R.string.https_vk_com) ,
+                    url = "https://vk.com/" ,
                     modifier = Modifier.weight(1f)
 
                 )
@@ -261,7 +261,7 @@ fun LoginScreen(
                 SocialButton(
                     painter = painterResource(id = R.drawable.icon_ok) ,
                     color = OKOrange ,
-                    url = stringResource(R.string.https_ok_ru) ,
+                    url = "https://ok.ru/" ,
                     modifier = Modifier.weight(1f)
                 )
             }
