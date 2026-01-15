@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -17,6 +18,8 @@ import com.example.core_navigation.navigation.Routes
 import com.example.courses.presentation.screen.CoursesScreen
 import com.example.favorites_ui.presentation.screen.FavoritesScreen
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
+import com.example.testtaskforeffectivemobile.R
+import com.example.ui.components.bottom_navigation.BottomNavigationBar
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -28,7 +31,11 @@ fun AppNavigation() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            if (currentRoute in listOf(Routes.COURSES, Routes.FAVORITES, Routes.ACCOUNT)) {
+            if (currentRoute in
+                listOf(
+                    Routes.COURSES,
+                    Routes.FAVORITES,
+                    Routes.ACCOUNT)) {
                 BottomNavigationBar(
                     currentRoute = currentRoute,
                     onNavigate = { route ->
@@ -51,7 +58,7 @@ fun AppNavigation() {
         ) {
             composable(Routes.LOGIN) {
                 LoginScreen(
-                    viewModel = koinViewModel(),  // ← вот так просто!
+                    viewModel = koinViewModel(),
                     onLoginSuccess = {
                         navController.navigate(Routes.COURSES) {
                             popUpTo(Routes.LOGIN) { inclusive = true }
@@ -68,7 +75,7 @@ fun AppNavigation() {
                 FavoritesScreen(viewModel = viewModel)
             }
             composable(Routes.ACCOUNT) {
-                Text("Аккаунт")
+                Text( stringResource(R.string.account) )
             }
         }
     }

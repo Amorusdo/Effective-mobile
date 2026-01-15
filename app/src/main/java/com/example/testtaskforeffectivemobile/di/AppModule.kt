@@ -7,8 +7,10 @@ package com.example.testtaskforeffectivemobile.di
 import CoursesViewModel
 import androidx.room.Room
 import com.example.auth_ui.presentation.view_model.AuthViewModel
+import com.example.common.constant.ApiConfig.BASE_URL
 import com.example.core.core_database.database.AppDatabase
 import com.example.core_network.api.CoursesApiService
+import com.example.core_ui.theme.INT_30
 import com.example.courses.domain.repository.CoursesRepositoryImpl
 import com.example.courses.domain.repository.CoursesRepository
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
@@ -24,34 +26,34 @@ import java.util.concurrent.TimeUnit
 val appModule = module {
 
     // OkHttp
-    single<OkHttpClient> {  // ← указываем тип явно
+    single<OkHttpClient> {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(INT_30, TimeUnit.SECONDS)
+            .readTimeout(INT_30, TimeUnit.SECONDS)
             .build()
     }
 
     // Retrofit
-    single<Retrofit> {  // ← указываем тип явно
+    single<Retrofit> {
         Retrofit.Builder()
-            .baseUrl("https://drive.usercontent.google.com/")
-            .client(get())  // теперь Koin знает, что нужен OkHttpClient
+            .baseUrl(BASE_URL)
+            .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     // API Service
-    single<CoursesApiService> {  // ← указываем тип явно
+    single<CoursesApiService> {
         get<Retrofit>().create(CoursesApiService::class.java)
     }
 
     // Room Database
-    single<AppDatabase> {  // ← указываем тип явно
+    single<AppDatabase> {
         Room.databaseBuilder(
             androidContext(),
             AppDatabase::class.java,
