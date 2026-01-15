@@ -10,6 +10,7 @@ val Green = Color(0xFF4CAF50)
 val White = Color(0xFFFFFFFF)
 val VKBlue = Color(0xFF2787F5)
 val OKOrange = Color(0xFFEE8208)
+val Transparent = Color(0x3C7A7977)
 
 // Текст
 val TextWhite = Color(0xFFFFFFFF)

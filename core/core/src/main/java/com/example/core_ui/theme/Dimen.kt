@@ -3,6 +3,10 @@ package com.example.core_ui.theme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
+const val INT_30: Long = 30
+
+
 //Height
 val height2 = 2.dp
 val height4 = 4.dp
