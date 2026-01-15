@@ -10,4 +10,9 @@
     <string name="example_mail_com">example@mail.com</string>
     <string name="email">Email</string>
     <string name="enter_by">Или войти через</string>
+    <string name="email_invalid">Email invalid</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="email_valid">Email valid</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="no_account">"Нет аккаунта? "</string>
 </resources>
