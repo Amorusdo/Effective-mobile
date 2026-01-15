@@ -8,6 +8,7 @@ const val INT_30: Long = 30
 
 
 //Height
+val height1 = 1.dp
 val height2 = 2.dp
 val height4 = 4.dp
 val height6 = 6.dp
@@ -15,8 +16,11 @@ val height8 = 8.dp
 val height12 = 12.dp
 val height16 = 16.dp
 val height24 = 24.dp
+val height28 = 28.dp
+val height32 = 32.dp
 val height40 = 40.dp
 val height50 = 50.dp
+val height52 = 52.dp
 val height140 = 140.dp
 val height180 = 180.dp
 
@@ -144,6 +148,10 @@ val rounding12 = 12.dp
 val rounding2 = 2.dp
 val rounding10 = 10.dp
 val rounding24 = 24.dp
+
+//f
+
+const val f1 = 1f
 
 
 
