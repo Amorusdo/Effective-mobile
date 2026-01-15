@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import com.example.auth_ui.R
 import com.example.auth_ui.presentation.view_model.AuthViewModel
 import com.example.auth_ui.presentation.widget.SocialButton
+import com.example.common.utils.InputFilters
 import com.example.core_ui.theme.Typography
 
 @Composable
@@ -84,59 +85,61 @@ fun LoginScreen(
             Surface(
                 shape = RoundedCornerShape(28.dp),
             ) {
-            OutlinedTextField(
-                value = uiState.email,
-                onValueChange = { viewModel.onEmailChange(it) },
-                placeholder = {
-                    Text(
-                        text = "example@gmail.com",
-                        color = TextHint
-                    )
-                },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Email
-                ),
-                isError = uiState.email.isNotEmpty() && !uiState.isEmailValid,
-                trailingIcon = {
-                    when {
-                        uiState.email.isNotEmpty() && uiState.isEmailValid -> {
-                            Icon(
-                                imageVector = Icons.Default.CheckCircle,
-                                contentDescription = "Email valid",
-                                tint = GreenButton
-                            )
+                OutlinedTextField(
+                    value = uiState.email,
+                    onValueChange = { newValue ->
+                        viewModel.onEmailChange(InputFilters.filterEmail(newValue))
+                    },
+                    placeholder = {
+                        Text(
+                            text = "example@gmail.com",
+                            color = TextHint
+                        )
+                    },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Email
+                    ),
+                    isError = uiState.email.isNotEmpty() && !uiState.isEmailValid,
+                    trailingIcon = {
+                        when {
+                            uiState.email.isNotEmpty() && uiState.isEmailValid -> {
+                                Icon(
+                                    imageVector = Icons.Default.CheckCircle,
+                                    contentDescription = "Email valid",
+                                    tint = GreenButton
+                                )
+                            }
+
+                            uiState.email.isNotEmpty() && !uiState.isEmailValid -> {
+                                Icon(
+                                    imageVector = Icons.Default.Error,
+                                    contentDescription = "Email invalid",
+                                    tint = Color.Red
+                                )
+                            }
                         }
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        errorBorderColor = Color.Transparent,
 
-                        uiState.email.isNotEmpty() && !uiState.isEmailValid -> {
-                            Icon(
-                                imageVector = Icons.Default.Error,
-                                contentDescription = "Email invalid",
-                                tint = Color.Red
-                            )
-                        }
-                    }
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    errorBorderColor = Color.Transparent,
+                        focusedContainerColor = SurfaceDark,
+                        unfocusedContainerColor = SurfaceDark,
+                        errorContainerColor = SurfaceDark,
 
-                    focusedContainerColor = SurfaceDark,
-                    unfocusedContainerColor = SurfaceDark,
-                    errorContainerColor = SurfaceDark,
+                        focusedTextColor = TextWhite,
+                        unfocusedTextColor = TextWhite,
+                        errorTextColor = TextWhite,
 
-                    focusedTextColor = TextWhite,
-                    unfocusedTextColor = TextWhite,
-                    errorTextColor = TextWhite,
-
-                    cursorColor = GreenButton
-                ),
-                shape = RoundedCornerShape(28.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp)
-            )}
+                        cursorColor = GreenButton
+                    ),
+                    shape = RoundedCornerShape(28.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(52.dp)
+                )}
 
             Spacer(modifier = Modifier.height(6.dp))
 
