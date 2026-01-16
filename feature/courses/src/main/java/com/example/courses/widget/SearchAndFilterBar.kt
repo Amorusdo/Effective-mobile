@@ -37,6 +37,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.core_ui.theme.padding16
+import com.example.core_ui.theme.size12
 import com.example.courses.R
 
 @Composable
@@ -53,8 +55,8 @@ fun SearchAndFilterBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                .padding(padding16),
+            horizontalArrangement = Arrangement.spacedBy(size12),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Поле поиска
@@ -70,7 +72,7 @@ fun SearchAndFilterBar(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "Поиск",
+                        contentDescription = stringResource(R.string.search) ,
                         tint = TextGray
                     )
                 },
@@ -105,7 +107,7 @@ fun SearchAndFilterBar(
             ) {
                 Icon(
                     painter =  painterResource(R.drawable.ic_funnel) ,
-                    contentDescription = "Фильтр",
+                    contentDescription = stringResource(R.string.filter) ,
                     tint = TextWhite,
                     modifier = Modifier.size(24.dp)
                 )

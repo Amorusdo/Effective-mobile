@@ -33,7 +33,7 @@ import java.time.format.DateTimeFormatter
                     _uiState.update {
                         it.copy(
                             courses = courses,
-                            filteredCourses = courses,  // изначально все курсы
+                            filteredCourses = courses,
                             isLoading = false,
                             isSortedByDate = false
                         )

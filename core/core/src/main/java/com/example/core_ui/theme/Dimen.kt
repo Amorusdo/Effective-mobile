@@ -5,7 +5,10 @@ import androidx.compose.ui.unit.sp
 
 
 const val INT_30: Long = 30
+const val INT_2: Long = 2
 
+//Width
+val width6 = 6.dp
 
 //Height
 val height1 = 1.dp

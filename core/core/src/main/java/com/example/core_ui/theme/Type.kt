@@ -24,7 +24,7 @@ val Typography = Typography(
     ),
     bodyMedium = TextStyle(
         fontFamily = robotoFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
         color = TextGray

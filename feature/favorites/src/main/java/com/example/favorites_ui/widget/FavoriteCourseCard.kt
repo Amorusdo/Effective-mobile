@@ -42,6 +42,7 @@ import com.example.core_ui.theme.Typography
 import com.example.courses.R
 import com.example.courses.domain.model.Course
 import com.example.courses.utils.DateFormatter
+import com.example.courses.utils.DateFormatter.formatDate
 
 @Composable
 fun FavoriteCourseCard(
@@ -145,7 +146,7 @@ fun FavoriteCourseCard(
                     ) {
                         // Дата
                         Text(
-                            text = DateFormatter.formatDate(course.publishDate),
+                            text = formatDate(course.publishDate),
                             style = MaterialTheme.typography.bodySmall,
                             color = White,
                             fontSize = 12.sp

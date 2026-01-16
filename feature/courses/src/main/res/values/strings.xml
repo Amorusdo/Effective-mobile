@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="search_courses">Search courses…</string>
+    <string name="search_courses">Поиск курсов…</string>
+    <string name="not_correct">Ошибка</string>
+    <string name="repeat">Повторить</string>
+    <string name="courses_not_found">Курсы не найдены</string>
+    <string name="cover">покрытие</string>
+    <string name="favourites">Избранное</string>
+    <string name="star">звезда</string>
+    <string name="rub">%1$s ₽</string>
+    <string name="more_details">Подробнее</string>
+    <string name="arrow">➔</string>
+    <string name="search">Поиск</string>
+    <string name="filter">Фильтр</string>
 </resources>
