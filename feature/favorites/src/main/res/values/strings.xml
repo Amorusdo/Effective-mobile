@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favourites">Избранное</string>
+    <string name="there_are_no_selected_courses">Нет избранных курсов</string>
+    <string name="add_courses_to_your_favorites">Добавьте курсы в избранное,\nчтобы быстро находить их здесь</string>
+</resources>
