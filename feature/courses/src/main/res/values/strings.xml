@@ -13,4 +13,7 @@
     <string name="arrow">➔</string>
     <string name="search">Поиск</string>
     <string name="filter">Фильтр</string>
+    <string name="by_date_added">По дате добавления</string>
+    <string name="arrow_botton">↓</string>
+    <string name="arrow_top">↑</string>
 </resources>
