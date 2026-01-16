@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Test task for Effective Mobile</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Вход</string>
+    <string name="general">Главная</string>
+    <string name="favourites">Избранное</string>
+    <string name="account">Аккаунт</string>
+    <string name="rub">%1$s ₽</string>
+    <string name="star">звезда</string>
+    <string name="more_details">Подробнее</string>
+    <string name="arrow">➔</string>
+    <string name="cover">картинка</string>
+</resources>
