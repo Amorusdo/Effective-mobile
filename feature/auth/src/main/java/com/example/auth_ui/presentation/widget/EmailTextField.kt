@@ -40,7 +40,7 @@ fun EmailTextField(
 ) {
     Column(modifier = modifier) {
         Text(
-            text = stringResource(R.string.email),
+            text = stringResource(com.example.common.R.string.email),
             style = Typography.labelLarge,
             color = TextWhite
         )
@@ -74,7 +74,6 @@ fun EmailTextField(
                                 tint = GreenButton
                             )
                         }
-
                         value.isNotEmpty() && !isValid -> {
                             Icon(
                                 imageVector = Icons.Default.Error,

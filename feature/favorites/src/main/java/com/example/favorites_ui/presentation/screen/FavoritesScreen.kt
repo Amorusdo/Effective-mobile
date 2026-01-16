@@ -53,7 +53,7 @@ fun FavoritesScreen(
         ) {
             // Заголовок "Вход"
             Text(
-                text = stringResource(R.string.favourites) ,
+                text = stringResource(com.example.common.R.string.favourites) ,
                 style = MaterialTheme.typography.headlineLarge ,
                 color = TextWhite ,
                 modifier = Modifier.padding(bottom = padding16)

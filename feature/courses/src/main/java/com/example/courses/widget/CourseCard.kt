@@ -82,7 +82,7 @@ fun CourseCard(
                 // Фоновое изображение
                 Image(
                     painter = painterResource(R.drawable.pic_cover) ,
-                    contentDescription = stringResource(R.string.cover) ,
+                    contentDescription = stringResource(com.example.common.R.string.cover) ,
                     modifier = Modifier.fillMaxSize() ,
                     contentScale = ContentScale.Crop
                 )
@@ -110,7 +110,7 @@ fun CourseCard(
                             } else {
                                 Icons.Default.BookmarkBorder
                             } ,
-                            contentDescription = stringResource(R.string.favourites) ,
+                            contentDescription = stringResource(com.example.common.R.string.favourites) ,
                             tint = if (course.isFavorite) {
                                 Green
                             } else {
@@ -143,7 +143,7 @@ fun CourseCard(
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_star) ,
-                                contentDescription = stringResource(R.string.star) ,
+                                contentDescription = stringResource(com.example.common.R.string.star) ,
                                 tint = Green ,
                                 modifier = Modifier.size(size16)
                             )
@@ -209,7 +209,7 @@ fun CourseCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = stringResource(R.string.rub , course.price) ,
+                        text = stringResource(com.example.common.R.string.rub, course.price) ,
                         style = Typography.titleMedium ,
                         color = White ,
                         fontSize = textSize18
@@ -221,7 +221,7 @@ fun CourseCard(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = stringResource(R.string.more_details) ,
+                            text = stringResource(com.example.common.R.string.more_details) ,
                             style = Typography.bodyMedium ,
                             color = GreenButton ,
                             fontSize = textSize16
@@ -230,7 +230,7 @@ fun CourseCard(
                         Spacer(modifier = Modifier.width(width6))
 
                         Text(
-                            text = stringResource(R.string.arrow) ,
+                            text = stringResource(com.example.common.R.string.arrow) ,
                             color = GreenButton ,
                             fontSize = textSize16
                         )
