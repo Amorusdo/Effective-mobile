@@ -25,7 +25,7 @@ val height32 = 32.dp
 val height40 = 40.dp
 val height50 = 50.dp
 val height52 = 52.dp
-val height140 = 140.dp
+val height120 = 120.dp
 val height180 = 180.dp
 
 

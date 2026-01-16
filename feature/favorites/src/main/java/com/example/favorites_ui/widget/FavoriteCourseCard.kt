@@ -26,7 +26,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,14 +33,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.core_ui.theme.Typography
+import com.example.core_ui.theme.f1
+import com.example.core_ui.theme.height12
+import com.example.core_ui.theme.height120
+import com.example.core_ui.theme.padding16
+import com.example.core_ui.theme.padding2
+import com.example.core_ui.theme.padding4
+import com.example.core_ui.theme.padding6
+import com.example.core_ui.theme.padding8
+import com.example.core_ui.theme.size12
+import com.example.core_ui.theme.size16
+import com.example.core_ui.theme.size24
+import com.example.core_ui.theme.size32
+import com.example.core_ui.theme.size4
+import com.example.core_ui.theme.textSize12
+import com.example.core_ui.theme.textSize14
+import com.example.core_ui.theme.textSize16
+import com.example.core_ui.theme.textSize18
+import com.example.core_ui.theme.width6
 import com.example.courses.R
 import com.example.courses.domain.model.Course
-import com.example.courses.utils.DateFormatter
 import com.example.courses.utils.DateFormatter.formatDate
 
 @Composable
@@ -52,8 +66,8 @@ fun FavoriteCourseCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable {  },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            .clickable { },
+        elevation = CardDefaults.cardElevation(defaultElevation = padding2)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()
@@ -61,11 +75,11 @@ fun FavoriteCourseCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp)
+                    .height(height120)
             ) {
                 Image(
                     painter = painterResource(R.drawable.pic_cover),
-                    contentDescription = "cover",
+                    contentDescription = stringResource(com.example.favorites_ui.R.string.cover) ,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -73,25 +87,25 @@ fun FavoriteCourseCard(
                     onClick = onRemoveFavorite,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
-                        .padding(8.dp)
-                        .size(32.dp)
+                        .padding(padding8)
+                        .size(size32)
                 ) {
                     Box(
                         modifier = Modifier
                             .background(
-                                color = SurfaceDarkForCourses,
-                                shape = RoundedCornerShape(12.dp)
+                                color = SurfaceDarkForCourses ,
+                                shape = RoundedCornerShape(size12)
                             )
-                            .padding(horizontal = 6.dp, vertical = 6.dp)
+                            .padding(horizontal = padding6 , vertical = padding6)
                     ) {
                         Icon(
-                            modifier = Modifier.size(24.dp),
+                            modifier = Modifier.size(size24),
                             imageVector = if (course.isFavorite) {
                                 Icons.Default.Bookmark
                             } else {
                                 Icons.Default.BookmarkBorder
                             } ,
-                            contentDescription = "Избранное" ,
+                            contentDescription = stringResource(com.example.favorites_ui.R.string.favorite) ,
                             tint = if (course.isFavorite) {
                                 Green
                             } else {
@@ -103,53 +117,53 @@ fun FavoriteCourseCard(
                 Row(
                     modifier = Modifier
                         .align(Alignment.BottomStart)
-                        .padding(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        .padding(padding8),
+                    horizontalArrangement = Arrangement.spacedBy(size12),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Рейтинг
                     Box(
                         modifier = Modifier
                             .background(
-                                color = SurfaceDarkForCourses,
-                                shape = RoundedCornerShape(12.dp)
+                                color = SurfaceDarkForCourses ,
+                                shape = RoundedCornerShape(size12)
                             )
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                            .padding(horizontal = padding8 , vertical = padding4)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                            horizontalArrangement = Arrangement.spacedBy(size4)
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_star),
-                                contentDescription = "star",
+                                contentDescription = stringResource(com.example.favorites_ui.R.string.star) ,
                                 tint = Green,
-                                modifier = Modifier.size(16.dp)
+                                modifier = Modifier.size(size16)
                             )
 
                             Text(
                                 text = course.rating.toString(),
-                                style = MaterialTheme.typography.bodyMedium,
+                                style = Typography.titleMedium,
                                 color = White,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
+                                fontSize = textSize14 ,
+
                             )
                         }
                     }
                     Box(
                         modifier = Modifier
                             .background(
-                                color = SurfaceDarkForCourses,
-                                shape = RoundedCornerShape(12.dp)
+                                color = SurfaceDarkForCourses ,
+                                shape = RoundedCornerShape(size12)
                             )
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                            .padding(horizontal = padding8 , vertical = padding4)
                     ) {
                         // Дата
                         Text(
                             text = formatDate(course.publishDate),
-                            style = MaterialTheme.typography.bodySmall,
+                            style = Typography.bodySmall,
                             color = White,
-                            fontSize = 12.sp
+                            fontSize = textSize12
                         )
                     }}
             }
@@ -157,7 +171,7 @@ fun FavoriteCourseCard(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(padding16)
             ) {
                 // Заголовок
                 Text(
@@ -166,51 +180,54 @@ fun FavoriteCourseCard(
                     style = Typography.titleMedium
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(padding8))
 
                 // Описание
                 Text(
                     text = course.description,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style =Typography.titleMedium,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     color = Gray
                 )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(height12))
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(end = 8.dp)
+                        .padding(end = padding8)
                         .clickable { },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "${course.price} ₽",
-                        style = MaterialTheme.typography.titleMedium,
+                        text = stringResource(
+                            R.string.rub ,
+                            course.price
+                        ) ,
+                        style = Typography.titleMedium,
                         color = White,
-                        fontSize = 18.sp
+                        fontSize = textSize18
                     )
 
-                    Spacer(modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.weight(f1))
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Подробнее",
-                            style = MaterialTheme.typography.titleMedium,
+                            text = stringResource(com.example.favorites_ui.R.string.more_detailed) ,
+                            style =Typography.titleMedium,
                             color = GreenButton,
-                            fontSize = 16.sp
+                            fontSize = textSize16
                         )
 
-                        Spacer(modifier = Modifier.width(6.dp))
+                        Spacer(modifier = Modifier.width(width6))
 
                         Text(
-                            text = "➔",
+                            text = stringResource(com.example.favorites_ui.R.string.arrow_right) ,
                             color = GreenButton,
-                            fontSize = 16.sp
+                            fontSize = textSize16
                         )
                     }
                 }

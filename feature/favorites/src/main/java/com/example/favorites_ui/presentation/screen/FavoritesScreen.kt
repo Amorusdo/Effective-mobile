@@ -20,8 +20,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color.Companion.Gray
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import com.example.core_ui.theme.Typography
+import com.example.core_ui.theme.height16
+import com.example.core_ui.theme.padding16
+import com.example.core_ui.theme.padding40
+import com.example.core_ui.theme.padding8
+import com.example.core_ui.theme.size12
+import com.example.favorites_ui.R
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
 import com.example.favorites_ui.widget.FavoriteCourseCard
 
@@ -37,7 +45,7 @@ fun FavoritesScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Black)
-            .padding(top = 40.dp, start = 16.dp) ,
+            .padding(top = padding40 , start = padding16) ,
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -45,10 +53,10 @@ fun FavoritesScreen(
         ) {
             // Заголовок "Вход"
             Text(
-                text = "Избранное" ,
+                text = stringResource(R.string.favourites) ,
                 style = MaterialTheme.typography.headlineLarge ,
                 color = TextWhite ,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = padding16)
             )
 
             // Контент
@@ -62,18 +70,18 @@ fun FavoritesScreen(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(height16))
                             Text(
-                                text = "Нет избранных курсов" ,
-                                style = MaterialTheme.typography.titleMedium ,
-                                color = Color.Gray
+                                text = stringResource(R.string.there_are_no_selected_courses) ,
+                                style = Typography.titleMedium ,
+                                color = Gray
                             )
-                            Spacer(modifier = Modifier.height(8.dp))
+                            Spacer(modifier = Modifier.height(padding8))
                             Text(
-                                text = "Добавьте курсы в избранное,\nчтобы быстро находить их здесь" ,
-                                style = MaterialTheme.typography.bodyMedium ,
-                                color = Color.Gray ,
-                                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                                text = stringResource(R.string.add_courses_to_your_favorites) ,
+                                style = Typography.titleMedium,
+                                color = Gray ,
+                                textAlign = TextAlign.Center
                             )
                         }
                     }
@@ -83,7 +91,7 @@ fun FavoritesScreen(
                     // Список избранных курсов
                     LazyColumn(
                         modifier = Modifier.fillMaxSize() ,
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                        verticalArrangement = Arrangement.spacedBy(size12)
                     ) {
                         items(
                             items = uiState.favorites ,
