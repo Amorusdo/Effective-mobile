@@ -1,6 +1,7 @@
 package com.example.favorites_ui.presentation.model
 
-import com.example.courses.domain.model.Course
+import com.example.domain.Course
+
 
 data class FavoritesUiState(
     val favorites: List<Course> = emptyList() ,

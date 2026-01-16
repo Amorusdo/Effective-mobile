@@ -1,8 +1,9 @@
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.courses.domain.model.Course
 import com.example.courses.domain.repository.CoursesRepository
 import com.example.courses.presentation.model.CoursesUiState
+import com.example.domain.Course
+import com.example.domain.FavoritesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,10 +12,9 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-
-
- class CoursesViewModel(
-    private val repository: CoursesRepository
+class CoursesViewModel(
+    private val repository: CoursesRepository,
+    private val favoritesRepository: FavoritesRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CoursesUiState())
@@ -22,6 +22,25 @@ import java.time.format.DateTimeFormatter
 
     init {
         loadCourses()
+        observeFavorites()
+    }
+
+    private fun observeFavorites() {
+        viewModelScope.launch {
+            favoritesRepository.getFavorites().collect { favorites ->
+                val favoriteIds = favorites.map { it.id }.toSet()
+                _uiState.update { state ->
+                    state.copy(
+                        courses = state.courses.map { course ->
+                            course.copy(isFavorite = course.id in favoriteIds)
+                        },
+                        filteredCourses = state.filteredCourses.map { course ->
+                            course.copy(isFavorite = course.id in favoriteIds)
+                        }
+                    )
+                }
+            }
+        }
     }
 
     fun loadCourses() {
@@ -91,28 +110,10 @@ import java.time.format.DateTimeFormatter
             )
         }
     }
+
     fun toggleFavorite(course: Course) {
         viewModelScope.launch {
-            repository.toggleFavorite(course)
-
-            _uiState.update { state ->
-                state.copy(
-                    courses = state.courses.map {
-                        if (it.id == course.id) {
-                            it.copy(isFavorite = !it.isFavorite)
-                        } else {
-                            it
-                        }
-                    },
-                    filteredCourses = state.filteredCourses.map {
-                        if (it.id == course.id) {
-                            it.copy(isFavorite = !it.isFavorite)
-                        } else {
-                            it
-                        }
-                    }
-                )
-            }
+            favoritesRepository.toggleFavorite(course)
         }
     }
 }

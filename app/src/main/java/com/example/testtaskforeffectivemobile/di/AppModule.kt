@@ -9,10 +9,12 @@ import androidx.room.Room
 import com.example.auth_ui.presentation.view_model.AuthViewModel
 import com.example.common.constant.ApiConfig.BASE_URL
 import com.example.core.core_database.database.AppDatabase
+import com.example.core_data.FavoritesRepositoryImpl
 import com.example.core_network.api.CoursesApiService
 import com.example.core_ui.theme.INT_30
 import com.example.courses.domain.repository.CoursesRepositoryImpl
 import com.example.courses.domain.repository.CoursesRepository
+import com.example.domain.FavoritesRepository
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -67,17 +69,20 @@ val appModule = module {
         get<AppDatabase>().favoriteCourseDao()
     }
 
-    // Repository
+    // Repositories
     single<CoursesRepository> {
         CoursesRepositoryImpl(
-            apiService = get() ,
+            apiService = get(),
             favoriteCourseDao = get()
         )
     }
 
+    single<FavoritesRepository> {
+        FavoritesRepositoryImpl()
+    }
+
     // ViewModels
     viewModel { AuthViewModel() }
-    viewModel { CoursesViewModel(repository = get()) }
-    viewModel { FavoritesViewModel(repository = get()) }
-
+    viewModel { CoursesViewModel(repository = get(), favoritesRepository = get()) }
+    viewModel { FavoritesViewModel(favoritesRepository = get()) }
 }

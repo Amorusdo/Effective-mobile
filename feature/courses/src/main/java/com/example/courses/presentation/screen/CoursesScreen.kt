@@ -25,16 +25,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.core_ui.theme.height16
 import com.example.core_ui.theme.padding16
 import com.example.core_ui.theme.padding8
 import com.example.core_ui.theme.size12
 import com.example.core_ui.theme.textSize16
 import com.example.courses.R
-import com.example.courses.widget.CourseCard
 import com.example.courses.widget.SearchAndFilterBar
+import com.example.ui.cards.CourseCard
 
 
 @Composable

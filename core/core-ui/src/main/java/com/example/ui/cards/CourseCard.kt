@@ -1,4 +1,4 @@
-package com.example.favorites_ui.widget
+package com.example.ui.cards
 
 import Green
 import GreenButton
@@ -38,7 +38,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.core_ui.theme.Typography
 import com.example.core_ui.theme.f1
 import com.example.core_ui.theme.height12
-import com.example.core_ui.theme.height120
+import com.example.core_ui.theme.height8
+import com.example.core_ui.theme.padding120
 import com.example.core_ui.theme.padding16
 import com.example.core_ui.theme.padding2
 import com.example.core_ui.theme.padding4
@@ -54,37 +55,42 @@ import com.example.core_ui.theme.textSize14
 import com.example.core_ui.theme.textSize16
 import com.example.core_ui.theme.textSize18
 import com.example.core_ui.theme.width6
-import com.example.courses.R
-import com.example.courses.domain.model.Course
-import com.example.courses.utils.DateFormatter.formatDate
+import com.example.domain.Course
+import com.example.ui.R
+
 
 @Composable
-fun FavoriteCourseCard(
+fun CourseCard(
     course: Course ,
-    onRemoveFavorite: () -> Unit
+    onFavoriteClick: () -> Unit ,
+    isFavoritesScreen: Boolean = false
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { },
+            .clickable { } ,
         elevation = CardDefaults.cardElevation(defaultElevation = padding2)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
+            // Изображение с элементами поверх
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(height120)
+                    .height(padding120)
             ) {
+                // Фоновое изображение
                 Image(
-                    painter = painterResource(R.drawable.pic_cover),
+                    painter = painterResource(R.drawable.pic_cover) ,
                     contentDescription = stringResource(com.example.common.R.string.cover) ,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize() ,
                     contentScale = ContentScale.Crop
                 )
+
+                // Закладка в правом верхнем углу
                 IconButton(
-                    onClick = onRemoveFavorite,
+                    onClick = onFavoriteClick ,
                     modifier = Modifier
                         .align(Alignment.TopEnd)
                         .padding(padding8)
@@ -99,7 +105,7 @@ fun FavoriteCourseCard(
                             .padding(horizontal = padding6 , vertical = padding6)
                     ) {
                         Icon(
-                            modifier = Modifier.size(size24),
+                            modifier = Modifier.size(size24) ,
                             imageVector = if (course.isFavorite) {
                                 Icons.Default.Bookmark
                             } else {
@@ -114,11 +120,13 @@ fun FavoriteCourseCard(
                         )
                     }
                 }
+
+                // Рейтинг и дата в левом нижнем углу
                 Row(
                     modifier = Modifier
                         .align(Alignment.BottomStart)
-                        .padding(padding8),
-                    horizontalArrangement = Arrangement.spacedBy(size12),
+                        .padding(padding8) ,
+                    horizontalArrangement = Arrangement.spacedBy(size12) ,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Рейтинг
@@ -131,22 +139,21 @@ fun FavoriteCourseCard(
                             .padding(horizontal = padding8 , vertical = padding4)
                     ) {
                         Row(
-                            verticalAlignment = Alignment.CenterVertically,
+                            verticalAlignment = Alignment.CenterVertically ,
                             horizontalArrangement = Arrangement.spacedBy(size4)
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_star),
+                                painter = painterResource(id = R.drawable.ic_star) ,
                                 contentDescription = stringResource(com.example.common.R.string.star) ,
-                                tint = Green,
+                                tint = Green ,
                                 modifier = Modifier.size(size16)
                             )
 
                             Text(
-                                text = course.rating.toString(),
-                                style = Typography.titleMedium,
-                                color = White,
+                                text = course.rating.toString() ,
+                                style = Typography.titleMedium ,
+                                color = White ,
                                 fontSize = textSize14 ,
-
                             )
                         }
                     }
@@ -160,14 +167,16 @@ fun FavoriteCourseCard(
                     ) {
                         // Дата
                         Text(
-                            text = formatDate(course.publishDate),
-                            style = Typography.bodySmall,
-                            color = White,
+                            text = course.publishDate ,
+                            style = Typography.bodySmall ,
+                            color = White ,
                             fontSize = textSize12
                         )
-                    }}
+                    }
+                }
             }
 
+            // Контент под изображением
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -175,19 +184,19 @@ fun FavoriteCourseCard(
             ) {
                 // Заголовок
                 Text(
-                    text = course.title,
-                    color = White,
+                    text = course.title ,
+                    color = White ,
                     style = Typography.titleMedium
                 )
 
-                Spacer(modifier = Modifier.height(padding8))
+                Spacer(modifier = Modifier.height(height8))
 
-                // Описание
+                // Описание (макс 2 строки)
                 Text(
-                    text = course.description,
-                    style =Typography.titleMedium,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
+                    text = course.description ,
+                    style = Typography.bodyMedium ,
+                    maxLines = 2 ,
+                    overflow = TextOverflow.Ellipsis ,
                     color = Gray
                 )
 
@@ -197,16 +206,13 @@ fun FavoriteCourseCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(end = padding8)
-                        .clickable { },
+                        .clickable { } ,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = stringResource(
-                            com.example.common.R.string.rub ,
-                            course.price
-                        ) ,
-                        style = Typography.titleMedium,
-                        color = White,
+                        text = stringResource(com.example.common.R.string.rub, course.price) ,
+                        style = Typography.titleMedium ,
+                        color = White ,
                         fontSize = textSize18
                     )
 
@@ -217,8 +223,8 @@ fun FavoriteCourseCard(
                     ) {
                         Text(
                             text = stringResource(com.example.common.R.string.more_details) ,
-                            style =Typography.titleMedium,
-                            color = GreenButton,
+                            style = Typography.bodyMedium ,
+                            color = GreenButton ,
                             fontSize = textSize16
                         )
 
@@ -226,12 +232,11 @@ fun FavoriteCourseCard(
 
                         Text(
                             text = stringResource(com.example.common.R.string.arrow) ,
-                            color = GreenButton,
+                            color = GreenButton ,
                             fontSize = textSize16
                         )
                     }
                 }
-
             }
         }
     }

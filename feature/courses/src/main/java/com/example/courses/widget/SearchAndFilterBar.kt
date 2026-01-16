@@ -41,6 +41,7 @@ import com.example.core_ui.theme.padding56
 import com.example.core_ui.theme.padding8
 import com.example.core_ui.theme.size12
 import com.example.core_ui.theme.size28
+import com.example.core_ui.theme.size32
 import com.example.core_ui.theme.size56
 import com.example.core_ui.theme.textSize16
 import com.example.core_ui.theme.textSize20
@@ -115,7 +116,7 @@ fun SearchAndFilterBar(
                     painter =  painterResource(R.drawable.ic_funnel) ,
                     contentDescription = stringResource(R.string.filter) ,
                     tint = TextWhite,
-                    modifier = Modifier.size(size56)
+                    modifier = Modifier.size(size32)
                 )
             }
         }

@@ -4,7 +4,7 @@ import com.example.core.core_database.dao.FavoriteCourseDao
 import com.example.core_network.api.CoursesApiService
 import com.example.courses.domain.mapper.toDomain
 import com.example.courses.domain.mapper.toFavoriteEntity
-import com.example.courses.domain.model.Course
+import com.example.domain.Course
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

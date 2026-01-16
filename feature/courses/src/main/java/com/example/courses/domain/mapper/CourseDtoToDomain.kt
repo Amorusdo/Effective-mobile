@@ -1,7 +1,7 @@
 package com.example.courses.domain.mapper
 
 import com.example.core_network.model.CourseDto
-import com.example.courses.domain.model.Course
+import com.example.domain.Course
 
 fun CourseDto.toDomain(): Course {
     return Course(
