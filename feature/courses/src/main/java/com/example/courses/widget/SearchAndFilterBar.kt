@@ -35,10 +35,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.core_ui.theme.f1
 import com.example.core_ui.theme.padding16
+import com.example.core_ui.theme.padding56
+import com.example.core_ui.theme.padding8
 import com.example.core_ui.theme.size12
+import com.example.core_ui.theme.size28
+import com.example.core_ui.theme.size56
+import com.example.core_ui.theme.textSize16
+import com.example.core_ui.theme.textSize20
+import com.example.core_ui.theme.width8
 import com.example.courses.R
 
 @Composable
@@ -89,17 +95,17 @@ fun SearchAndFilterBar(
                     unfocusedTextColor = TextWhite,
                     cursorColor = GreenButton
                 ),
-                shape = RoundedCornerShape(28.dp),
+                shape = RoundedCornerShape(size28),
                 modifier = Modifier
-                    .weight(1f)
-                    .height(56.dp),
+                    .weight(f1)
+                    .height(padding56),
                 singleLine = true
             )
 
             // Кнопка фильтра
             Box(
                 modifier = Modifier
-                    .size(56.dp)
+                    .size(size56)
                     .clip(CircleShape)
                     .background(SurfaceDark)
                     .clickable { /* фильтр неактивен */ },
@@ -109,7 +115,7 @@ fun SearchAndFilterBar(
                     painter =  painterResource(R.drawable.ic_funnel) ,
                     contentDescription = stringResource(R.string.filter) ,
                     tint = TextWhite,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(size56)
                 )
             }
         }
@@ -118,21 +124,23 @@ fun SearchAndFilterBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(end = 8.dp , bottom = 8.dp)
+                .padding(end = padding8 , bottom = padding8)
                 .clickable { onSortClick() },
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "По дате добавления",
+                text = stringResource(R.string.by_date_added) ,
                 color = GreenButton,
-                fontSize = 16.sp
+                fontSize = textSize16
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(width8))
             Text(
-                text = if (isSortedByDate) "↓" else "↑",
+                text = if (isSortedByDate) stringResource(R.string.arrow_botton) else stringResource(
+                    R.string.arrow_top
+                ) ,
                 color = GreenButton,
-                fontSize = 20.sp
+                fontSize = textSize20
             )
         }
     }
