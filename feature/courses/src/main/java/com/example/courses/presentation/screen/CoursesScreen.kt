@@ -24,8 +24,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.core_ui.theme.height16
+import com.example.core_ui.theme.padding16
+import com.example.core_ui.theme.padding8
+import com.example.core_ui.theme.size12
+import com.example.core_ui.theme.textSize16
+import com.example.courses.R
 import com.example.courses.widget.CourseCard
 import com.example.courses.widget.SearchAndFilterBar
 
@@ -69,17 +76,17 @@ fun CoursesScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = uiState.error ?: "Ошибка" ,
+                            text = uiState.error ?: stringResource(R.string.not_correct) ,
                             color = Red
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(height16))
                         Button(
                             onClick = { viewModel.loadCourses() } ,
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = GreenButton
                             )
                         ) {
-                            Text("Повторить")
+                            Text(stringResource(R.string.repeat))
                         }
                     }
                 }
@@ -93,16 +100,16 @@ fun CoursesScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Курсы не найдены" ,
+                            text = stringResource(R.string.courses_not_found) ,
                             color = TextGray ,
-                            fontSize = 16.sp
+                            fontSize = textSize16
                         )
                     }
                 } else {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize() ,
-                        contentPadding = PaddingValues(horizontal = 16.dp , vertical = 8.dp) ,
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                        contentPadding = PaddingValues(horizontal = padding16 , vertical = padding8) ,
+                        verticalArrangement = Arrangement.spacedBy(size12)
                     ) {
                         items(
                             items = uiState.filteredCourses ,

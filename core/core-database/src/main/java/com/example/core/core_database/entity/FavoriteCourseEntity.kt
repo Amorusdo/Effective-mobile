@@ -2,8 +2,9 @@ package com.example.core.core_database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.common.constant.ApiConfig.FAVORITE_COURSE
 
-@Entity(tableName = "favorite_courses")
+@Entity(tableName = FAVORITE_COURSE)
 data class FavoriteCourseEntity(
     @PrimaryKey
     val id: String,

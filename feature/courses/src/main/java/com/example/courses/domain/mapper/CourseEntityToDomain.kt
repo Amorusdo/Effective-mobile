@@ -11,7 +11,7 @@ fun FavoriteCourseEntity.toDomain(): Course {
         price = price,
         rating = rating,
         startDate = startDate,
-        isFavorite = true, // если в БД, значит избранное
+        isFavorite = true,
         publishDate = publishDate
     )
 }
