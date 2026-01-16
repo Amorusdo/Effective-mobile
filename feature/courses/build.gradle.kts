@@ -41,10 +41,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core"))
+    implementation(project(":core:common"))
     implementation(project(":core:core-network"))
     implementation(project(":core:core-database"))
     implementation(project(":core:core-navigation"))
-    implementation(project(":core:core"))
 
 
     implementation(libs.androidx.core.ktx)
