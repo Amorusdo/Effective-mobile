@@ -1,6 +1,6 @@
 package com.example.courses.presentation.model
 
-import com.example.domain.Course
+import com.example.domain.model.Course
 
 data class CoursesUiState(
     val courses: List<Course> = emptyList() ,

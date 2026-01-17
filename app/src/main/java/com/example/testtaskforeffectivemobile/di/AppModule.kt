@@ -2,19 +2,17 @@
 
 package com.example.testtaskforeffectivemobile.di
 
-
-
-import CoursesViewModel
 import androidx.room.Room
-import com.example.auth_ui.presentation.view_model.AuthViewModel
 import com.example.common.constant.ApiConfig.BASE_URL
 import com.example.core.core_database.database.AppDatabase
-import com.example.core_data.FavoritesRepositoryImpl
+import com.example.core_data.repository.CoursesRepositoryImpl
+import com.example.core_data.repository.FavoritesRepositoryImpl
 import com.example.core_network.api.CoursesApiService
 import com.example.core_ui.theme.INT_30
-import com.example.courses.domain.repository.CoursesRepositoryImpl
-import com.example.courses.domain.repository.CoursesRepository
-import com.example.domain.FavoritesRepository
+
+import com.example.courses.presentation.view_model.CoursesViewModel
+import com.example.domain.repository.CoursesRepository
+import com.example.domain.repository.FavoritesRepository
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -72,7 +70,7 @@ val appModule = module {
     // Repositories
     single<CoursesRepository> {
         CoursesRepositoryImpl(
-            apiService = get(),
+            apiService = get() ,
             favoriteCourseDao = get()
         )
     }
@@ -81,8 +79,20 @@ val appModule = module {
         FavoritesRepositoryImpl()
     }
 
-    // ViewModels
-    viewModel { AuthViewModel() }
-    viewModel { CoursesViewModel(repository = get(), favoritesRepository = get()) }
-    viewModel { FavoritesViewModel(favoritesRepository = get()) }
+    // ViewModels (убрали AuthViewModel отсюда)
+    viewModel {
+        CoursesViewModel(
+            getCoursesUseCase = get(),
+            sortCoursesByPublishDateUseCase = get(),
+            toggleFavoriteUseCase = get()
+        )
+    }
+
+    viewModel {
+        FavoritesViewModel(
+            getFavoriteCoursesUseCase = get(),
+            removeFromFavoritesUseCase = get(),
+            toggleFavoriteUseCase = get()
+        )
+    }
 }
