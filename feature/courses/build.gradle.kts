@@ -43,6 +43,8 @@ android {
 dependencies {
     implementation(project(":core:core"))
     implementation(project(":core:common"))
+    implementation(project(":core:core-ui"))
+    implementation(project(":core:core-domain"))
     implementation(project(":core:core-network"))
     implementation(project(":core:core-database"))
     implementation(project(":core:core-navigation"))

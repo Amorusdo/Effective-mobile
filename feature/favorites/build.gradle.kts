@@ -40,7 +40,9 @@ dependencies {
     implementation(project(":core:core"))
     implementation(project(":core:common"))
     implementation(project(":feature:courses"))
+    implementation(project(":core:core-ui"))
     implementation(project(":core:core-navigation"))
+    implementation(project(":core:core-domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -51,5 +53,8 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.koin.androidx.compose)
+
+    implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 }

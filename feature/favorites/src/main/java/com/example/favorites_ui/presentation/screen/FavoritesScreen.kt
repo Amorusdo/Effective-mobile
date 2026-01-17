@@ -31,7 +31,7 @@ import com.example.core_ui.theme.padding8
 import com.example.core_ui.theme.size12
 import com.example.favorites_ui.R
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
-import com.example.favorites_ui.widget.FavoriteCourseCard
+import com.example.ui.cards.CourseCard
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,9 +97,9 @@ fun FavoritesScreen(
                             items = uiState.favorites ,
                             key = { course -> course.id }
                         ) { course ->
-                            FavoriteCourseCard(
+                         CourseCard(
                                 course = course ,
-                                onRemoveFavorite = { viewModel.removeFavorite(course) }
+                                onFavoriteClick = { viewModel.removeFavorite(course) },
                             )
                         }
                     }
