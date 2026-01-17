@@ -1,6 +1,5 @@
 package com.example.testtaskforeffectivemobile.navigation
 
-import CoursesViewModel
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -13,9 +12,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.auth_ui.presentation.screen.LoginScreen
+import com.example.auth_ui._.presentation.screen.LoginScreen
 import com.example.core_navigation.navigation.Routes
 import com.example.courses.presentation.screen.CoursesScreen
+import com.example.courses.presentation.view_model.CoursesViewModel
 import com.example.favorites_ui.presentation.screen.FavoritesScreen
 import com.example.favorites_ui.presentation.view_model.FavoritesViewModel
 import com.example.testtaskforeffectivemobile.R
@@ -56,6 +56,7 @@ fun AppNavigation() {
             startDestination = Routes.LOGIN,
             modifier = Modifier.padding(paddingValues)
         ) {
+
             composable(Routes.LOGIN) {
                 LoginScreen(
                     viewModel = koinViewModel(),

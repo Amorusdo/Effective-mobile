@@ -1,7 +1,6 @@
 package com.example.courses.presentation.screen
 
 import Black
-import CoursesViewModel
 import GreenButton
 import Red
 import TextGray
@@ -20,6 +19,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -31,6 +31,7 @@ import com.example.core_ui.theme.padding8
 import com.example.core_ui.theme.size12
 import com.example.core_ui.theme.textSize16
 import com.example.courses.R
+import com.example.courses.presentation.view_model.CoursesViewModel
 import com.example.courses.widget.SearchAndFilterBar
 import com.example.ui.cards.CourseCard
 
@@ -40,6 +41,11 @@ fun CoursesScreen(
     viewModel: CoursesViewModel ,
 ) {
     val uiState by viewModel.uiState.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadCourses()
+    }
+
 
     Column(
         modifier = Modifier
@@ -110,7 +116,7 @@ fun CoursesScreen(
                         verticalArrangement = Arrangement.spacedBy(size12)
                     ) {
                         items(
-                            items = uiState.filteredCourses ,
+                            items = uiState.filteredCourses,
                             key = { course -> course.id }
                         ) { course ->
                             CourseCard(

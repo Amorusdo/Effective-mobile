@@ -55,7 +55,7 @@ import com.example.core_ui.theme.textSize14
 import com.example.core_ui.theme.textSize16
 import com.example.core_ui.theme.textSize18
 import com.example.core_ui.theme.width6
-import com.example.domain.Course
+import com.example.domain.model.Course
 import com.example.ui.R
 
 
@@ -63,7 +63,6 @@ import com.example.ui.R
 fun CourseCard(
     course: Course ,
     onFavoriteClick: () -> Unit ,
-    isFavoritesScreen: Boolean = false
 ) {
     Card(
         modifier = Modifier
