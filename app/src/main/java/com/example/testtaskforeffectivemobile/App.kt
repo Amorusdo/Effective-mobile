@@ -21,8 +21,8 @@ class App : Application() {
             modules(
                 appModule,
                 dataModule,
-                domainModule,   // UseCase для курсов
-                authModule      // Авторизация
+                domainModule,
+                authModule
             )
         }
     }

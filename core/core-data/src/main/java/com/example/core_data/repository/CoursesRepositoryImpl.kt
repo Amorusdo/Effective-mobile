@@ -4,6 +4,7 @@ import com.example.core.core_database.dao.FavoriteCourseDao
 import com.example.core_data.mapper.toDomain
 import com.example.core_data.mapper.toFavoriteEntity
 import com.example.core_network.api.CoursesApiService
+import com.example.domain.error.DomainError
 import com.example.domain.model.Course
 import com.example.domain.repository.CoursesRepository
 
@@ -14,9 +15,7 @@ class CoursesRepositoryImpl(
 
     override suspend fun getCourses(): Result<List<Course>> {
         return try {
-            println("🌐 Запрос к API...")
             val response = apiService.getCourses()
-            println("📦 Получено курсов из API: ${response.courses.size}")
 
             val courses = response.courses.map { dto ->
                 val course = dto.toDomain()
@@ -24,10 +23,8 @@ class CoursesRepositoryImpl(
                 course.copy(isFavorite = isFavorite)
             }
 
-            println("✅ Успешно обработано курсов: ${courses.size}")
             Result.success(courses)
         } catch (e: Exception) {
-            println("❌ Ошибка загрузки: ${e.message}")
             e.printStackTrace()
             Result.failure(e)
         }
@@ -56,7 +53,7 @@ class CoursesRepositoryImpl(
                 favoriteCourseDao.insertFavorite(course.toFavoriteEntity())
                 Result.success(Unit)
             } else {
-                Result.failure(Exception("Курс не найден"))
+                Result.failure(DomainError.CourseNotFound)
             }
         } catch (e: Exception) {
             Result.failure(e)

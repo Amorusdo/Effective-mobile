@@ -56,8 +56,8 @@ fun CoursesScreen(
         SearchAndFilterBar(
             isSortedByDate = uiState.isSortedByDate ,
             onSortClick = { viewModel.toggleSort() } ,
-            searchQuery = uiState.searchQuery ,  // ← передаём
-            onSearchChange = { viewModel.onSearchChange(it) }  // ← передаём
+            searchQuery = uiState.searchQuery ,
+            onSearchChange = { viewModel.onSearchChange(it) }
         )
 
         // Контент

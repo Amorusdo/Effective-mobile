@@ -14,4 +14,7 @@
     <string name="email_valid">Верный адрес электронной почты</string>
     <string name="enter_password">Введите пароль</string>
     <string name="no_account">"Нет аккаунта? "</string>
+
+
+
 </resources>

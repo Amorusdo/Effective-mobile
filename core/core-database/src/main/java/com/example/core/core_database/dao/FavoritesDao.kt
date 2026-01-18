@@ -26,5 +26,5 @@ interface FavoriteCourseDao {
     suspend fun isFavorite(courseId: String): Boolean
 
     @Query("SELECT * FROM favorite_courses")
-    suspend fun getAllFavoritesOnce(): List<FavoriteCourseEntity>  // ← добавьте
+    suspend fun getAllFavoritesOnce(): List<FavoriteCourseEntity>
 }

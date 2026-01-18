@@ -11,4 +11,29 @@
     <string name="more_details">Подробнее</string>
     <string name="arrow">➔</string>
     <string name="cover">картинка</string>
+
+    <string name="error_invalid_credentials">Неверный email или пароль</string>
+    <string name="error_email_already_in_use">Ошибка регистрации. Возможно, email уже используется</string>
+    <string name="error_weak_password">Пароль слишком слабый</string>
+    <string name="error_invalid_email">Неверный формат email</string>
+    <string name="error_logout_failed">Ошибка при выходе</string>
+    <string name="error_user_data_fetch_failed">Ошибка получения данных пользователя</string>
+
+    <!-- Validation errors -->
+    <string name="error_email_empty">Email не может быть пустым</string>
+    <string name="error_password_empty">Пароль не может быть пустым</string>
+    <string name="error_password_too_short">Пароль должен содержать минимум 6 символов</string>
+    <string name="error_passwords_do_not_match">Пароли не совпадают</string>
+    <string name="error_name_empty">Имя не может быть пустым</string>
+
+    <!-- Course errors -->
+    <string name="error_course_not_found">Курс не найден</string>
+
+    <!-- Network errors -->
+    <string name="error_network">Ошибка подключения к серверу</string>
+    <string name="error_server">Ошибка сервера</string>
+
+    <!-- General errors -->
+    <string name="error_unknown">Неизвестная ошибка</string>
+
 </resources>

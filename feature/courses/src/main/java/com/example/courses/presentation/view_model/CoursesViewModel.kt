@@ -1,7 +1,9 @@
 package com.example.courses.presentation.view_model
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.common.utils.toUserMessage
 import com.example.courses.presentation.model.CoursesUiState
 import com.example.domain.model.Course
 import com.example.domain.usecase.GetCoursesUseCase
@@ -18,10 +20,11 @@ import kotlinx.coroutines.launch
  * Использует UseCase'ы вместо прямого обращения к Repository
  */
 class CoursesViewModel(
+    application: Application,
     private val getCoursesUseCase: GetCoursesUseCase,
     private val sortCoursesByPublishDateUseCase: SortCoursesByPublishDateUseCase,
     private val toggleFavoriteUseCase: ToggleFavoriteUseCase
-) : ViewModel() {
+) :  AndroidViewModel(application) {
 
     private val _uiState = MutableStateFlow(CoursesUiState())
     val uiState: StateFlow<CoursesUiState> = _uiState.asStateFlow()
@@ -54,7 +57,7 @@ class CoursesViewModel(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = error.message ?: "Неизвестная ошибка"
+                            error = error.toUserMessage(getApplication()),
                         )
                     }
                 }

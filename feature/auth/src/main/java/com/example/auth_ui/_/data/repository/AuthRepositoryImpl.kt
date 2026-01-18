@@ -6,6 +6,7 @@ import com.example.auth_ui._.data.remote.dto.LoginRequest
 import com.example.auth_ui._.data.remote.dto.RegisterRequest
 import com.example.auth_ui._.domain.model.User
 import com.example.auth_ui._.domain.repository.AuthRepository
+import com.example.domain.error.DomainError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -27,10 +28,10 @@ class AuthRepositoryImpl(
                     // tokenStorage.saveToken(user.token)
                     Result.success(user)
                 } else {
-                    Result.failure(Exception("Неверный email или пароль"))
+                    Result.failure(DomainError.CourseNotFound)
                 }
             } catch (e: Exception) {
-                Result.failure(Exception(e.message ?: "Ошибка подключения к серверу"))
+                Result.failure(DomainError.NetworkError)
             }
         }
     }
@@ -52,10 +53,10 @@ class AuthRepositoryImpl(
                     // tokenStorage.saveToken(user.token)
                     Result.success(user)
                 } else {
-                    Result.failure(Exception("Ошибка регистрации. Возможно, email уже используется"))
+                    Result.failure(DomainError.InvalidEmail)
                 }
             } catch (e: Exception) {
-                Result.failure(Exception(e.message ?: "Ошибка подключения к серверу"))
+                Result.failure(DomainError.ServerError)
             }
         }
     }
@@ -69,7 +70,7 @@ class AuthRepositoryImpl(
                     // tokenStorage.clearToken()
                     Result.success(Unit)
                 } else {
-                    Result.failure(Exception("Ошибка при выходе"))
+                    Result.failure(DomainError.LogoutFailed)
                 }
             } catch (e: Exception) {
                 // Даже если запрос не удался, очистите локальные данные
@@ -92,7 +93,7 @@ class AuthRepositoryImpl(
                 // }
                 Result.success(null)
             } catch (e: Exception) {
-                Result.failure(Exception(e.message ?: "Ошибка получения данных пользователя"))
+                Result.failure(DomainError.UserDataFetchFailed)
             }
         }
     }

@@ -1,10 +1,12 @@
 package com.example.auth_ui._.presentation.view_model
 
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.auth_ui._.domain.model.User
 import com.example.auth_ui._.domain.usecase.RegisterUseCase
+import com.example.common.utils.toUserMessage
 import com.example.common.utils.EmailValidator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -25,8 +27,9 @@ data class RegisterUiState(
 )
 
 class RegisterViewModel(
+    application: Application ,
     private val registerUseCase: RegisterUseCase
-) : ViewModel() {
+) : AndroidViewModel(application) {
 
     private val _uiState = MutableStateFlow(RegisterUiState())
     val uiState: StateFlow<RegisterUiState> = _uiState.asStateFlow()
@@ -96,7 +99,7 @@ class RegisterViewModel(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = error.message ?: "Неизвестная ошибка",
+                            error = error.toUserMessage(getApplication()),
                             isRegisterEnabled = isFormValid(
                                 it.isEmailValid,
                                 it.password,
