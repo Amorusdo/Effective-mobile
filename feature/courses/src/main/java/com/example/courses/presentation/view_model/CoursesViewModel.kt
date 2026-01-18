@@ -33,7 +33,6 @@ class CoursesViewModel(
 
     init {
         loadCourses()
-
     }
 
     /**
