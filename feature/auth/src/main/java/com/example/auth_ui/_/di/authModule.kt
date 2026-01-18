@@ -32,5 +32,5 @@ val authModule = module {
 
     // ViewModels
     viewModel { AuthViewModel(loginUseCase = get()) }
-    viewModel { RegisterViewModel(registerUseCase = get()) }
+    viewModel { RegisterViewModel(application = get(), registerUseCase = get()) }
 }

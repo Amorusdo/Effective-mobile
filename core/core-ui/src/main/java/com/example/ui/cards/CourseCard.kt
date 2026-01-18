@@ -190,7 +190,6 @@ fun CourseCard(
 
                 Spacer(modifier = Modifier.height(height8))
 
-                // Описание (макс 2 строки)
                 Text(
                     text = course.description ,
                     style = Typography.bodyMedium ,

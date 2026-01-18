@@ -9,7 +9,6 @@ import com.example.core_data.repository.CoursesRepositoryImpl
 import com.example.core_data.repository.FavoritesRepositoryImpl
 import com.example.core_network.api.CoursesApiService
 import com.example.core_ui.theme.INT_30
-
 import com.example.courses.presentation.view_model.CoursesViewModel
 import com.example.domain.repository.CoursesRepository
 import com.example.domain.repository.FavoritesRepository
@@ -82,6 +81,7 @@ val appModule = module {
     // ViewModels (убрали AuthViewModel отсюда)
     viewModel {
         CoursesViewModel(
+            application = get(),
             getCoursesUseCase = get(),
             sortCoursesByPublishDateUseCase = get(),
             toggleFavoriteUseCase = get()
